@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>blog</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min' %}">
+	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+	
+	{% block content %}
+
+			{% for post in posts %}
+
+	              <div class="post">
+		          <div class="date
+		          ">publie: {{post.published_date}}</div>
+		          <h2> <a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a> </h2>
+		          <p>{{post.text|linebreaksbr}}</p>
+		          </div>
+
+			{% endfor %}
+	{% endblock %}
+	
+</body>
+</html>
